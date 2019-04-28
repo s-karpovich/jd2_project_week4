@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Items List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <a th:href="@{/items}">Items List</a>
+    <a th:href="@{/users}">Users List</a>
+    <a th:href="@{/add}">Add User</a>
+</head>
+<body>
+<h2>Items List page</h2>
+<p>
+    <th:block th:each="item,stat : ${items}">
+        <li th:text="'Item#'+${stat.count} + ': ' + ${item.name} + ' ' + ${item.status}"></li>
+    </th:block>
+</p>
+</body>
+</html>

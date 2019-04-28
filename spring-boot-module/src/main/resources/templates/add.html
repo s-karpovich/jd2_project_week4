@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add user</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <a th:href="@{/items}">Items List</a>
+    <a th:href="@{/users}">Users List</a>
+    <a th:href="@{/add}">Add User</a>
+
+</head>
+<body>
+<h2>Add User page</h2>
+<form class="w3-container" action="#" th:action="@{/add}" th:object="${userDTO}" method="post">
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input class="w3-input w3-border w3-light-grey" type="text" th:name="username"/></td>
+        </tr>
+
+        <tr>
+            <td>Password:</td>
+            <td><input class="w3-input w3-border w3-light-grey" type="password" th:name="password"/></td>
+
+        </tr>
+        <tr>
+            <td>Role:</td>
+            <td>
+                <select class="w3-input w3-border w3-light-grey" name="role" th:name="role">
+                    <option disabled selected>Choose User Role</option>
+                    <option value="Administrator">Administrator</option>
+                    <option value="Customer">Customer</option>
+                </select>
+            </td>
+
+        </tr>
+        <td><input type="hidden" th:name="isDeleted" th:value="false"/></td>
+        <tr>
+            <td>
+                <input class="w3-btn w3-blue-grey" type="submit" value="Add User">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
