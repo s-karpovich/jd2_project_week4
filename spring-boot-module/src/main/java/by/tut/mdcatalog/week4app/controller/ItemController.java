@@ -30,17 +30,4 @@ public class ItemController {
         logger.debug("Get items method");
         return "items";
     }
-
-    @GetMapping("/add")
-    public String addItem(ItemDTO itemDTO, Model model) {
-        model.addAttribute(itemDTO);
-        logger.debug("Get add method");
-        return "add";
-    }
-
-    @GetMapping("/result")
-    public String showResult() {
-        logger.debug("Get result method");
-        return "result";
-    }
 }

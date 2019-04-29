@@ -7,7 +7,6 @@ import static by.tut.mdcatalog.week4app.service.constants.UserConstant.USER_MAX_
 import static by.tut.mdcatalog.week4app.service.constants.UserConstant.USER_MAX_PASSWORD_SIZE;
 
 public class UserDTO {
-
     private Long id;
     @NotNull
     @Size(max = USER_MAX_NAME_SIZE)

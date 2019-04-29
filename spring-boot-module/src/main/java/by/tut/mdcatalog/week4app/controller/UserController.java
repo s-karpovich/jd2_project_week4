@@ -2,7 +2,6 @@ package by.tut.mdcatalog.week4app.controller;
 
 import by.tut.mdcatalog.week4app.service.UserService;
 import by.tut.mdcatalog.week4app.service.converter.UserConverter;
-import by.tut.mdcatalog.week4app.service.model.ItemDTO;
 import by.tut.mdcatalog.week4app.service.model.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +29,7 @@ public class UserController {
     public String findAllUsers(Model model) {
         List<UserDTO> users = userService.getUsers();
         model.addAttribute("users", users);
-        logger.debug("Get users method");
+        logger.debug("Got users method");
         return "users";
     }
 
@@ -44,7 +43,7 @@ public class UserController {
             return "add";
         }
         userService.add(userDTO);
-        logger.debug("Post add method");
+        logger.debug("Posted add method");
         return "redirect:/result";
     }
 }

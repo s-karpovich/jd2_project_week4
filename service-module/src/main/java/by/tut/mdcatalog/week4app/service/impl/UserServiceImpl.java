@@ -10,6 +10,7 @@ import by.tut.mdcatalog.week4app.service.model.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -23,12 +24,14 @@ public class UserServiceImpl implements UserService {
     private final ConnectionHandler connectionHandler;
     private final UserRepository userRepository;
     private final UserConverter userConverter;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(ConnectionHandler connectionHandler, UserRepository userRepository, UserConverter userConverter) {
+    public UserServiceImpl(ConnectionHandler connectionHandler, UserRepository userRepository, UserConverter userConverter, PasswordEncoder passwordEncoder) {
         this.connectionHandler = connectionHandler;
         this.userRepository = userRepository;
         this.userConverter = userConverter;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -59,6 +62,7 @@ public class UserServiceImpl implements UserService {
             try {
                 connection.setAutoCommit(false);
                 User user = userConverter.fromUserDTO(userDTO);
+                user.setPassword(encodePassword(user.getPassword()));
                 user.setDeleted(false);
                 userRepository.add(connection, user);
                 connection.commit();
@@ -71,5 +75,9 @@ public class UserServiceImpl implements UserService {
             logger.error(e.getMessage(), e);
             throw new ServiceException("Database request problem");
         }
+    }
+
+    private String encodePassword(String password) {
+        return passwordEncoder.encode(password);
     }
 }

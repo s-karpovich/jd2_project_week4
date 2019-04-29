@@ -5,8 +5,10 @@ CREATE TABLE IF NOT EXISTS t_item( F_ID BIGINT NOT NULL PRIMARY KEY AUTO_INCREME
 CREATE TABLE IF NOT EXISTS t_role( F_ID BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT, F_NAME VARCHAR(30) NOT NULL, F_DELETED BOOLEAN NOT NULL) ENGINE InnoDB
 CREATE TABLE IF NOT EXISTS t_user( F_ID BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT, F_USERNAME VARCHAR(70) NOT NULL, F_PASSWORD VARCHAR(80) NOT NULL, F_ROLE VARCHAR(30) NOT NULL, F_DELETED BOOLEAN NOT NULL) ENGINE InnoDB
 INSERT INTO t_item VALUES (F_ID, "itemName1", "READY", false)
-INSERT INTO t_item VALUES (F_ID, "itemName1", "STEADY", false)
+INSERT INTO t_item VALUES (F_ID, "itemName2", "STEADY", false)
 INSERT INTO t_role VALUES (F_ID, "Administrator", false)
 INSERT INTO t_role VALUES (F_ID, "Customer", false)
-INSERT INTO t_user VALUES (F_ID, "admin", "admin", "Administrator", false)
-INSERT INTO t_user VALUES (F_ID, "user", "user", "Customer", false)
+INSERT INTO t_user VALUES (F_ID, "admin", "$2a$10$d7fUpMxz2YTSsv9pSenjxuwdF/lKweYull70DhOiyN/WMR2kkbKjW", "Administrator", false)
+INSERT INTO t_user VALUES (F_ID, "cust", "$2a$10$JXc2Na/.9p4epVPkz2OzouFCwj7Jpv75LOKiALo9aIndrBG8ywUWK", "Customer", false)
+INSERT INTO t_user VALUES (F_ID, "tester", "tester", "Customer", false)
+INSERT INTO t_user VALUES (F_ID, "blank", "", "Customer", false)
