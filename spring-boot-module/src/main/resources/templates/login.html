@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<form class="w3-container" th:action="@{/login}" method="post">
+    <fieldset>
+    <table>
+        <div th:if="${param.error}">
+            <div>
+                Authentication failed!
+            </div>
+        </div>
+
+        <div th:if="${param.logout}">
+            <div>
+                Logged out
+            </div>
+        </div>
+
+        <tr>
+            <td>Username:</td>
+            <td><input class="w3-input w3-border w3-light-grey" type="text" name="username" id="username" required="true"/></td>
+        </tr>
+
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input class="w3-input w3-border w3-light-grey" type="password" name="password"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="w3-input w3-border w3-light-grey" type="submit" value="Log In"/>
+            </td>
+        </tr>
+    </table>
+    </fieldset>
+</form>
+
+</body>
+</html>

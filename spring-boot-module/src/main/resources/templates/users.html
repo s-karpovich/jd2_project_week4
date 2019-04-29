@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Users List</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <a th:href="@{/items}">Items List</a>
+    <a th:href="@{/users}">Users List</a>
+    <a th:href="@{/add}">Add User</a>
+</head>
+<body>
+<body>
+<h2>User List page</h2>
+<p>
+    <th:block th:each="user,stat : ${users}">
+        <li th:text="'User#'+${stat.count} + ': ' + ${user.username}+ ' '+ ${user.role}"
+        </li></th:block>
+</p>
+</body>
+
+</body>
+</html>
